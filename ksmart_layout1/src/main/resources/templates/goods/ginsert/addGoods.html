@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default}">
+
+<th:block layout:fragment="customTitle">
+	<title> 상품 등록 </title>
+</th:block>
+<th:block layout:fragment="customContents">
+	<form action="/addGoods" method="post"> 
+	<table border = "1">
+		<tr>
+			<th>상품이름</th>
+			<td><input type="text" name="goodsName"></td>
+		</tr>
+		<tr>
+			<th>상품카테고리</th>
+			<td><input type="text" name="goodsCate"></td>
+		</tr>
+		<tr>
+			<th>상품가격</th>
+			<td><input type="text" name="goodsPrice"></td>
+		</tr>
+		<tr>
+			<th>상품색상</th>
+			<td><input type="text" name="goodsColor"></td>
+		</tr>
+		<tr>
+			<th>상품사이즈</th>
+			<td><input type="text" name="goodsSize"></td>
+		</tr>
+		<tr>
+			<th>상품상세설명</th>
+			<td><input type="text" name="goodsDesc"></td>
+		</tr>
+		<tr style="text-align:right">
+			<th colspan="2"><button type="submit">상품등록</button></th>
+		</tr>
+	</table>
+	<label th:text="${result}"></label>
+	</form>		
+</th:block>
+</html>

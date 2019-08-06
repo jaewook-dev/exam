@@ -1,0 +1,29 @@
+<!-- login.html -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+	  layout:decorate="~{layout/default}">
+
+<th:block layout:fragment="customTitle">
+	<title> 로그인 </title>
+</th:block>
+<th:block layout:fragment="customContents">
+	<form action="/login" method="post"> 
+	<table border = "1">
+		<tr>
+			<th>아이디</th>
+			<td><input type="text" name="memberId"></td>
+		</tr>
+		<tr>
+			<th>비밀번호</th>
+			<td><input type="password" name="memberPw"></td>
+		</tr>
+		<tr style="text-align:right">
+			<th colspan="2"><button type="submit"> 로그인 </button></th>
+		</tr>
+	</table>
+	<label th:text="${result}"></label>
+	</form>		
+</th:block>
+</html>

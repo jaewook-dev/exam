@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default}">
+
+<th:block layout:fragment="customTitle">
+	<title> 상품 수정 </title>
+</th:block>
+<th:block layout:fragment="customContents">
+	<form action="/modifyGoods" method="post" th:each="list : ${goodsList}"> 
+	<input type="hidden" name="goodsCode" th:value="${list.goodsCode}">
+	<input type="hidden" name="memberId" th:value="${list.memberId}">
+	<table border = "1" >
+		<tr>
+			<th>상품이름</th>
+			<td><input type="text" name="goodsName" th:value="${list.goodsName}"></td>
+		</tr>
+		<tr>
+			<th>상품카테고리</th>
+			<td><input type="text" name="goodsCate" th:value="${list.goodsCate}"></td>
+		</tr>
+		<tr>
+			<th>상품가격</th>
+			<td><input type="text" name="goodsPrice" th:value="${list.goodsPrice}"></td>
+		</tr>
+		<tr>
+			<th>상품색상</th>
+			<td><input type="text" name="goodsColor" th:value="${list.goodsColor}"></td>
+		</tr>
+		<tr>
+			<th>상품사이즈</th>
+			<td><input type="text" name="goodsSize" th:value="${list.goodsSize}"></td>
+		</tr>
+		<tr>
+			<th>상품상세설명</th>
+			<td><textarea rows="3" cols="22" name="goodsDesc" th:text="${list.goodsDesc}"></textarea></td>
+		</tr>
+		<tr style="text-align:right">
+			<th colspan="2"><button type="submit">상품수정</button></th>
+		</tr>
+	</table>
+	<label th:text="${result}"></label>
+	</form>		
+</th:block>
+</html>

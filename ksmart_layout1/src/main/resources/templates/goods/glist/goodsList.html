@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default}">
+
+<th:block layout:fragment="customTitle">
+	<title> 상품 목록 </title>
+</th:block>
+<th:block layout:fragment="customContents">
+	<br/>
+	<form action="/goodsList" method="post">
+		<select name ="sk">
+			<option value = "g_cate">상품카테고리</option>
+			<option value = "g_name">상품이름</option>
+			<option value = "g.m_id">판매자ID</option>
+		</select>
+		<input type="text" name="sv">
+		<br/>
+		<br/>
+		가격 : <input type="text" name = "firstPrice"> ~ <input type="text" name = "lastPrice">
+		<button type="submit"> 검색 </button>
+	</form>
+	<br/>
+	<table border = "1" style="width:100%">
+		<tr style="text-align:center">
+			<th>아이디</th>
+			<th>권한</th>
+			<th>이름</th>
+			<th>이메일</th>
+			<th>상품코드</th>
+			<th>상품이름</th>
+			<th>카테고리</th>
+			<th>가격</th>
+			<th>색상</th>
+			<th>크기</th>
+			<th>등록날짜</th>
+			<th>상세설명</th>
+			<th>수정</th>
+			<th>삭제</th>
+		</tr>
+		<tr style="text-align:center" th:each="list : ${goodsList}">
+			<td th:text="${list.memberId}"></td>
+			<td th:text="${list.memberLevel}"></td>
+			<td th:text="${list.memberName}"></td>
+			<td th:text="${list.memberEmail}"></td>
+			<td th:text="${list.goodsCode}"></td>
+			<td th:text="${list.goodsName}"></td>
+			<td th:text="${list.goodsCate}"></td>
+			<td th:text="${list.goodsPrice}"></td>
+			<td th:text="${list.goodsColor}"></td>
+			<td th:text="${list.goodsSize}"></td>
+			<td th:text="${list.goodsDate}"></td>
+			<td th:text="${list.goodsDesc}"></td>
+			<td><a th:href="@{/modifyGoods(goodsCode=${list.goodsCode})}">수정</a></td>
+			<td><a th:href="@{/removeGoods(goodsCode=${list.goodsCode})}">삭제</a></td>
+		</tr>
+	</table>		
+</th:block>
+</html>

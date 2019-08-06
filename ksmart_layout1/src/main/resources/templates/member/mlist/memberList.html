@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default}">
+
+<th:block layout:fragment="customTitle">
+	<title> 회원 목록 </title>
+</th:block>
+<th:block layout:fragment="customContents">
+	<br/>
+	<form action="/memberList" method="post">
+		<select name ="sk">
+			<option value = "m_id">회원아이디</option>
+			<option value = "m_name">회원이름</option>
+		</select>
+		<input type="text" name="sv">
+		<button type="submit"> 검색 </button>
+	</form>
+	<br/>
+	<table border = "1" style="width:100%">
+		<tr>
+			<th>아이디</th>
+			<th>권한</th>
+			<th>이름</th>
+			<th>이메일</th>
+			<th>수정</th>
+			<th>삭제</th>
+		</tr>
+		<tr th:each="list : ${memberList}">
+			<td th:text="${list.memberId}"></td>
+			<td th:text="${list.memberLevel}"></td>
+			<td th:text="${list.memberName}"></td>
+			<td th:text="${list.memberEmail}"></td>
+			<td><a th:href="@{/modifyMember(memberId=${list.memberId})}">수정</a></td>
+			<td><a th:href="@{/removeMember(memberId=${list.memberId})}">삭제</a></td>
+		</tr>
+	</table>		
+</th:block>
+</html>
